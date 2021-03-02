@@ -2,14 +2,14 @@
 
 A tool that converts enums to string literal enum with only one click. Build with ❤️.
 
-### Usages
+## Usages
 
 ![Usages](docs/summary.gif)
 
 
-### Install
+## Install
 
-#### As typescript plugin
+### As typescript plugin
 
 1. Install package
 
