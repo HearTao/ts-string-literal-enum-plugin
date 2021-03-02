@@ -3,7 +3,7 @@
   "displayName": "Typescript string literal enums Tools",
   "description": "Useful refactor of string literal enums with TypeScript.",
   "publisher": "kingwl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "repository": {
       "type": "git",
