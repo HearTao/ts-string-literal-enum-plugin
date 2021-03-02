@@ -17,11 +17,7 @@ You can see [ts-string-literal-enum-plugin](https://marketplace.visualstudio.com
 
 1. Install package
 
-`yarn add ts-string-literal-enum-plugin`
-
-or
-
-`npm i ts-string-literal-enum-plugin`
+`yarn add ts-string-literal-enum-plugin` or `npm i ts-string-literal-enum-plugin`
 
 2. Update tsconfig
 
