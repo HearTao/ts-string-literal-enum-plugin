@@ -1,6 +1,5 @@
 import type * as ts from "typescript/lib/tsserverlibrary";
 
-import { ConfigManager } from "./config";
 import {
     convertEnumIntoStringLiteralActionName,
     convertEnumMemberIntoStringLiteralActionName,
@@ -28,8 +27,7 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
     constructor(
         private readonly info: ts.server.PluginCreateInfo,
         private readonly typescript: typeof ts,
-        private readonly logger: LanguageServiceLogger,
-        private readonly _configManager: ConfigManager
+        private readonly logger: LanguageServiceLogger
     ) {}
 
     getApplicableRefactors(
