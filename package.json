@@ -22,7 +22,8 @@
     "link:extension": "cd extension && yarn link ts-string-literal-enum-plugin",
     "link:all": "yarn link && yarn link:demo && yarn link:extension",
 
-    "prettier": "prettier -c --config ./prettier.config.js ./src/**/*.{ts,tsx} ./tests/**/*.{ts,tsx} --write"
+    "lint": "prettier -c --config ./prettier.config.js ./src/**/*.{ts,tsx} ./tests/**/*.{ts,tsx}",
+    "prettier": "yarn lint --write"
   },
   "files": [
     "dist"

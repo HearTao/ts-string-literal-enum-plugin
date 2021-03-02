@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  push:
+    tags: [ '*' ]
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install yarn
+      run: npm install -g yarn
+    - name: Install deps
+      run: yarn
+    - name: Lint
+      run: yarn lint
+    - name: "Build"
+      run: yarn build
+    - name: Publish
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
