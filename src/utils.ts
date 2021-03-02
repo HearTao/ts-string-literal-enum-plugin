@@ -29,16 +29,6 @@ export function kindToActionNameAndDesc(
           ] as const);
 }
 
-export function isConvertibleMemberOfEnum(
-    enumMember: ts.EnumMember,
-    checker: ts.TypeChecker
-) {
-    return (
-        !enumMember.initializer ||
-        typeof checker.getConstantValue(enumMember) === "string"
-    );
-}
-
 export function isConvertibleEnumMember(enumMember: ts.EnumMember) {
     return !enumMember.initializer;
 }

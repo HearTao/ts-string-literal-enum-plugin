@@ -21,7 +21,6 @@ import {
     assert,
     getPositionOfPositionOrRange,
     isConvertibleEnumMember,
-    isConvertibleMemberOfEnum,
     kindToActionNameAndDesc
 } from "./utils";
 
@@ -206,11 +205,7 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
         }
 
         if (ts.isEnumDeclaration(currentToken.parent)) {
-            if (
-                !currentToken.parent.members.some(member =>
-                    isConvertibleMemberOfEnum(member, checker)
-                )
-            ) {
+            if (!currentToken.parent.members.some(isConvertibleEnumMember)) {
                 return Err(
                     "Enum declaration cannot be convert",
                     currentToken.parent.kind

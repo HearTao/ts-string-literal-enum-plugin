@@ -25,3 +25,7 @@ enum F6 {
     A = "A",
     B = "B"
 }
+
+enum F7 {
+    A = 1
+}
