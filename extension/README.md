@@ -1,7 +1,8 @@
 # ts-string-literal-enum-plugin
 
-A tool that converts enums to string enumerations with only one click. Build with ❤️.
+A tool that converts enums to string literal enum with only one click. Build with ❤️.
 
-Usages
+### Usages
 
-![Summary](/)
+![Usages](https://github.com/HearTao/ts-string-literal-enum-plugin/raw/main/docs/summary.gif)
+
