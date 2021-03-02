@@ -12,9 +12,13 @@
   },
   "scripts": {
     "build": "tsc",
-    "bootstrap": "yarn && cd tests/demo && yarn --no-lockfile",
+
+    "bootstrap:demo": "cd tests/demo && yarn --no-lockfile",
+    "bootstrap:all": "yarn && yarn bootstrap:demo",
+
     "build:link": "yarn build && yarn link && cd tests/demo && yarn link ts-string-literal-enum-plugin",
-    "prettier": "prettier -c --config ./prettier.config.js ./src/**/*.{ts,tsx} ./tests/**/*.{ts,tsx} --write"
+    "lint": "prettier -c --config ./prettier.config.js ./src/**/*.{ts,tsx} ./tests/**/*.{ts,tsx}",
+    "prettier": "yarn lint --write"
   },
   "files": [
     "dist"
