@@ -1,6 +1,6 @@
 {
   "name": "ts-string-literal-enum-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "repository": "git@github.com:HearTao/ts-string-literal-enum-plugin.git",
@@ -26,8 +26,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "ts-string-literal-enum-plugin": "^0.0.1"
-  }
+  ]
 }

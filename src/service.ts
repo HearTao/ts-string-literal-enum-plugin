@@ -1,6 +1,5 @@
 import type * as ts from "typescript/lib/tsserverlibrary";
 
-import { ConfigManager } from "./config";
 import {
     convertEnumIntoStringLiteralActionName,
     convertEnumMemberIntoStringLiteralActionName,
@@ -28,15 +27,13 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
     constructor(
         private readonly info: ts.server.PluginCreateInfo,
         private readonly typescript: typeof ts,
-        private readonly logger: LanguageServiceLogger,
-        private readonly _configManager: ConfigManager
+        private readonly logger: LanguageServiceLogger
     ) {}
 
     getApplicableRefactors(
         fileName: string,
         positionOrRange: number | ts.TextRange,
-        preferences: ts.UserPreferences | undefined,
-        triggerReason?: ts.RefactorTriggerReason
+        preferences: ts.UserPreferences | undefined
     ): ts.ApplicableRefactorInfo[] {
         const context = this.getRefactorContext(fileName);
         if (!context) {
@@ -45,12 +42,10 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
         }
 
         const ts = this.typescript;
-        const { file, program } = context;
-        const checker = program.getTypeChecker();
+        const { file } = context;
         const targetInfo = this.getTargetInfo(
             file,
-            getPositionOfPositionOrRange(positionOrRange),
-            checker
+            getPositionOfPositionOrRange(positionOrRange)
         );
 
         if (targetInfo.type !== OkType.Ok) {
@@ -122,13 +117,11 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
         }
 
         const ts = this.typescript;
-        const { file, program } = context;
-        const checker = program.getTypeChecker();
+        const { file } = context;
 
         const targetInfo = this.getTargetInfo(
             file,
-            getPositionOfPositionOrRange(positionOrRange),
-            checker
+            getPositionOfPositionOrRange(positionOrRange)
         );
         if (targetInfo.type !== OkType.Ok) {
             this.logger.log(targetInfo.reason);
@@ -143,14 +136,12 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
                     this.doChangesForEnumDeclaration(
                         file,
                         targetInfo.value,
-                        checker,
                         changeTracker
                     );
                 } else {
                     this.doChangesForEnumMember(
                         file,
                         targetInfo.value,
-                        checker,
                         changeTracker
                     );
                 }
@@ -184,10 +175,12 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
 
     getTargetInfo(
         file: ts.SourceFile,
-        pos: number,
-        checker: ts.TypeChecker
+        pos: number
     ): Result<EnumOrEnumMember, EnumOrEnumMember["kind"]> {
         const ts = this.typescript;
+        if (file.isDeclarationFile) {
+            return Err("Cannot convert in d.ts files");
+        }
 
         const currentToken = ts.getTokenAtPosition(file, pos);
         if (
@@ -226,25 +219,18 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
     doChangesForEnumDeclaration(
         file: ts.SourceFile,
         enumDecl: ts.EnumDeclaration,
-        checker: ts.TypeChecker,
         changeTracker: ts.textChanges.ChangeTracker
     ) {
         enumDecl.members
             .filter(isConvertibleEnumMember)
             .forEach(member =>
-                this.doChangesForEnumMember(
-                    file,
-                    member,
-                    checker,
-                    changeTracker
-                )
+                this.doChangesForEnumMember(file, member, changeTracker)
             );
     }
 
     doChangesForEnumMember(
         file: ts.SourceFile,
         enumMember: ts.EnumMember,
-        checker: ts.TypeChecker,
         changeTracker: ts.textChanges.ChangeTracker
     ) {
         const ts = this.typescript;
