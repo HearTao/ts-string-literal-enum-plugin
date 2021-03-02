@@ -1,0 +1,1 @@
+# ts-string-literal-enum-plugin
