@@ -1,0 +1,51 @@
+{
+  "name": "ts-string-literal-enum-plugin",
+  "displayName": "Typescript string literal enums Tools",
+  "description": "Useful refactor of string literal enums with TypeScript.",
+  "publisher": "kingwl",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/HearTao/ts-string-literal-enum-plugin.git"
+  },
+  "engines": {
+      "vscode": "^1.34.0"
+  },
+  "main": "./dist/index.js",
+  "keywords": [
+      "typescript",
+      "ts",
+      "enum"
+  ],
+  "categories": [
+      "Programming Languages"
+  ],
+  "contributes": {
+      "typescriptServerPlugins": [
+          {
+              "name": "ts-string-literal-enum-plugin",
+              "enableForWorkspaceTypeScriptVersions": true
+          }
+      ]
+  },
+  "activationEvents": [
+      "onLanguage:typescript",
+      "onLanguage:typescriptreact"
+  ],
+  "scripts": {
+      "postinstall": "node ./node_modules/vscode/bin/install",
+      "build": "vsce package"
+  },
+  "devDependencies": {
+      "typescript": "^4.1.2",
+      "vsce": "^1.81.1",
+      "vscode": "^1.1.5"
+  },
+  "dependencies": {
+      "ts-string-literal-enum-plugin": "*"
+  },
+  "extensionDependencies": [
+      "vscode.typescript"
+  ]
+}

@@ -1,0 +1,16 @@
+**/*.ts
+**/*.map
+**/*.txt
+**/tsconfig.json
+**/yarn.lock
+**/*.config.js
+**/extension
+**/tests
+**/*.log
+**/.github
+**/node_modules
+**/.vscode-test
+!node_modules/ts-string-literal-enum-plugin/dist/*.js
+!node_modules/ts-string-literal-enum-plugin/package.json
+!./dist/*.js
+!./img/logo.png

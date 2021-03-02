@@ -25,3 +25,24 @@ jobs:
       uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
+  publish-extension:
+    runs-on: windows-latest
+    needs: publish
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install yarn
+      run: npm install -g yarn
+    - name: Bootstrap
+      run: yarn bootstrap:release
+    - name: Install lastest extension
+      run: yarn add ts-string-literal-enum-plugin
+      working-directory: ./extension
+    - name: Build
+      run: yarn build:release
+    - name: Publish VSCode extension
+      run: yarn vsce publish -p ${{ secrets.AZURE_DEVOPS_ACCESS_TOKEN }}
+      working-directory: ./extension

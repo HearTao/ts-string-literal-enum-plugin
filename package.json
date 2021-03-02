@@ -12,15 +12,22 @@
   },
   "scripts": {
     "build": "tsc",
-
+    "build:extension": "cd extension && yarn build",
+    "build:release": "yarn build:extension",
     "bootstrap:demo": "cd tests/demo && yarn --no-lockfile",
-    "bootstrap:all": "yarn && yarn bootstrap:demo",
-
-    "build:link": "yarn build && yarn link && cd tests/demo && yarn link ts-string-literal-enum-plugin",
+    "bootstrap:extension": "cd extension && yarn --no-lockfile",
+    "bootstrap:all": "yarn && yarn bootstrap:demo && yarn bootstrap:extension",
+    "bootstrap:release": "yarn bootstrap:extension",
+    "link:demo": "cd tests/demo && yarn link ts-string-literal-enum-plugin",
+    "link:extension": "cd extension && yarn link ts-string-literal-enum-plugin",
+    "link:all": "yarn link && yarn link:demo && yarn link:extension",
     "lint": "prettier -c --config ./prettier.config.js ./src/**/*.{ts,tsx} ./tests/**/*.{ts,tsx}",
     "prettier": "yarn lint --write"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "ts-string-literal-enum-plugin": "^0.0.1"
+  }
 }
