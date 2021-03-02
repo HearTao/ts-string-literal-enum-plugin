@@ -9,6 +9,10 @@ A tool that converts enums to string literal enum with only one click. Build wit
 
 ## Install
 
+### As VSCode extension
+
+You can see [ts-string-literal-enum-plugin](https://marketplace.visualstudio.com/items?itemName=kingwl.ts-string-literal-enum-plugin).
+
 ### As typescript plugin
 
 1. Install package
