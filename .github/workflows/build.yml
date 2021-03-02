@@ -17,14 +17,21 @@ jobs:
         node-version: 12.x
     - name: Install yarn
       run: npm install -g yarn
-    - name: Install deps
-      run: yarn
+    - name: Bootstrap
+      run: yarn bootstrap:all
     - name: Lint
       run: yarn lint
     - name: "Build"
       run: yarn build
+    - name: "Build extension"
+      run: yarn build:extension
     - name: Upload build
       uses: actions/upload-artifact@v2
       with:
         name: ts-plugin
         path: ./dist
+    - name: Upload extension build
+      uses: actions/upload-artifact@v2
+      with:
+        name: vscode-plugin
+        path: ./extension/*.vsix
