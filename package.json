@@ -7,6 +7,8 @@
   "author": "kingwl <kingwenlu@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/microsoft__typescript-etw": "^0.1.1",
+    "open-typescript": "^4.3.0-dev.20210303",
     "prettier": "^2.2.1",
     "typescript": "^4.2.2"
   },

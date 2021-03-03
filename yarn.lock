@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@types/microsoft__typescript-etw@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@types/microsoft__typescript-etw/-/microsoft__typescript-etw-0.1.1.tgz#f2c9d835858827422f3b5885f9afb0cbdad95381"
+  integrity sha512-zdgHyZJEwbFKI6zhOqWPsNMhlrAk6qMrn9VMA6VQtRt/F+jNJKeaHIMysuO9oTLv0fWcli0gwUrMv8MeFyb3Sw==
+
+open-typescript@^4.3.0-dev.20210303:
+  version "4.3.0-dev.20210303"
+  resolved "https://registry.yarnpkg.com/open-typescript/-/open-typescript-4.3.0-dev.20210303.tgz#1cf96b002457daf99ba0120df3b534a8062d1629"
+  integrity sha512-SO637zV8ziRnVMTvIRWgTyzjs+sowRMJEv6ZqW8tQ/6LpalVPf5fwTLWF4rNkXVN6Cnb6l9Py76Dv+vJy2yKJg==
+
 prettier@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"

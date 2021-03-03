@@ -1,4 +1,5 @@
 import type * as ts from "typescript/lib/tsserverlibrary";
+import "open-typescript";
 
 import {
     convertEnumIntoStringLiteralActionName,
@@ -155,7 +156,8 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
         cb: (changeTracker: ts.textChanges.ChangeTracker) => void
     ) {
         const formatContext = this.typescript.formatting.getFormatContext(
-            formatOptions
+            formatOptions,
+            this.info.languageServiceHost
         );
         const textChangesContext: ts.textChanges.TextChangesContext = {
             formatContext,
